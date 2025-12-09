@@ -13,9 +13,23 @@ class ApiService {
         sendTimeout: ApiConfig.sendTimeOut,
       ),
     );
+
+    _addInterceptors();
   }
 
   static final ApiService _instance = ApiService._internal();
 
   factory ApiService() => _instance;
+
+  void _addInterceptors() {
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onResponse: (response, handler) {},
+
+        onRequest: (options, handler) {},
+
+        onError: (error, handler) {},
+      ),
+    );
+  }
 }
