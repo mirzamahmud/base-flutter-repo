@@ -47,7 +47,7 @@ class ApiClient {
         queryParameters: queryParams,
       );
 
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         return ApiResponse(
           isSuccess: true,
           message: response.statusMessage,
