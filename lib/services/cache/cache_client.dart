@@ -5,6 +5,27 @@ class CacheClient {
   final FlutterSecureStorage storage;
   CacheClient({required this.storage});
 
+  /// ==========================================================================
+  /// GET DATA
+  /// ==========================================================================
+
+  /// ==========================================================================
+  /// SET DATA
+  /// ==========================================================================
+
+  /// ==========================================================================
+  /// DELETE DATA
+  /// ==========================================================================
+
+  Future<void> saveData({required String key, required String value}) async {
+    await storage.write(key: key, value: value);
+  }
+
+  Future<String?> getData({required String key}) async {
+    final String? data = await storage.read(key: key);
+    return data;
+  }
+
   Future<String?> getAccessToken() async {
     return await storage.read(key: CachedDataKey.accessToken);
   }
